@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://arvore-placeholder.png" type="Texture" id=1]
+[ext_resource path="res://laranja.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -8,15 +9,33 @@ custom_solver_bias = 0.0
 radius = 7.891
 height = 20.0
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=4]
 
 script/source = "extends \"areaAcao.gd\"
 
+export (float) var tempo_fruta = 10.0
+var contador
+
 func _ready():
 	tex = load(\"res://laranja.png\")
+	pode_atuar = false
+	contador = 0.0
+	set_process(true)
 
-func atua(player):
+func _process(delta):
+	if contador > tempo_fruta:
+		pode_atuar = true
+		get_node(\"Frutas\").show()
+	else:
+		contador += delta
+
+func _atua(player):
 	print(\"arvore\")
+	get_node(\"Frutas\").hide()
+	pode_atuar = false
+	contador = 0.0
+	return true
+
 "
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -26,6 +45,7 @@ extents = Vector2( 10, 10 )
 
 [node name="Arvore" type="StaticBody2D"]
 
+editor/display_folded = true
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1.71911, 0, 0, 1.27295, 0.860015, 23.4971 )
@@ -36,7 +56,8 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-script/script = SubResource( 2 )
+script/script = SubResource( 4 )
+tempo_fruta = 10.0
 
 [node name="Sprite" type="Sprite" parent="."]
 
@@ -71,6 +92,46 @@ transform/scale = Vector2( 2.37566, 2.44508 )
 shape = SubResource( 3 )
 trigger = true
 _update_shape_index = 0
+
+[node name="Frutas" type="Node2D" parent="."]
+
+visibility/visible = false
+
+[node name="Sprite" type="Sprite" parent="Frutas"]
+
+transform/pos = Vector2( -34.5829, -20.6803 )
+transform/scale = Vector2( 0.133568, 0.133568 )
+texture = ExtResource( 2 )
+
+[node name="Sprite1" type="Sprite" parent="Frutas"]
+
+transform/pos = Vector2( -16.3109, -33.3912 )
+transform/scale = Vector2( 0.133568, 0.133568 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="Frutas"]
+
+transform/pos = Vector2( -11.5444, -15.1193 )
+transform/scale = Vector2( 0.133568, 0.133568 )
+texture = ExtResource( 2 )
+
+[node name="Sprite3" type="Sprite" parent="Frutas"]
+
+transform/pos = Vector2( 4.74147, -25.4469 )
+transform/scale = Vector2( 0.133568, 0.133568 )
+texture = ExtResource( 2 )
+
+[node name="Sprite4" type="Sprite" parent="Frutas"]
+
+transform/pos = Vector2( 35.7243, -21.0775 )
+transform/scale = Vector2( 0.133568, 0.133568 )
+texture = ExtResource( 2 )
+
+[node name="Sprite5" type="Sprite" parent="Frutas"]
+
+transform/pos = Vector2( 24.205, -33.3912 )
+transform/scale = Vector2( 0.133568, 0.133568 )
+texture = ExtResource( 2 )
 
 [connection signal="body_enter" from="AreaAcao" to="." method="on_body_enter"]
 

@@ -3,10 +3,15 @@ extends KinematicBody2D
 export (float) var velocidade
 export (float) var posicao_limite
 var alvo = null setget set_alvo
+var pontos
 
 func _ready():
+	reset()
 	set_fixed_process(true)
 	set_process_input(true)
+
+func reset():
+	pontos = 0
 
 func _fixed_process(delta):
 	""" Movimento """

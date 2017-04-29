@@ -36,6 +36,6 @@ transform/scale = Vector2( 2.85083, 2.85083 )
 transform/pos = Vector2( 22.3316, 40.4102 )
 transform/scale = Vector2( 0.473912, 0.473912 )
 velocidade = 200.0
-posicao_limite = 200.0
+posicao_limite = 700.0
 
 
