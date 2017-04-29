@@ -10,4 +10,6 @@ script/script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 
+transform/pos = Vector2( 0, -25 )
+
 

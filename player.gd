@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 export (float) var velocidade
 export (float) var posicao_limite
-var alvo = null
+var alvo = null setget set_alvo
 
 func _ready():
 	set_fixed_process(true)
@@ -27,6 +27,12 @@ func _fixed_process(delta):
 		motion = n.slide(motion)
 		move(motion)
 
+func popup(tex):
+	get_node("Balao").popup(tex)
+	
+func unpop():
+	get_node("Balao").unpop()
+
 func _input(event):
 	""" Ação!
 	Pra implementar uma ação, manda um `player.set("alvo", objeto_com_metodo_atua)`
@@ -36,3 +42,7 @@ func _input(event):
 	if event.is_action_pressed("ui_select") and alvo != null:
 		alvo.atua(self)
 
+func set_alvo(novo_alvo):
+	if novo_alvo == null:
+		unpop()
+	alvo = novo_alvo

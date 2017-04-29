@@ -8,15 +8,18 @@ custom_solver_bias = 0.0
 radius = 7.891
 height = 20.0
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=2]
 
 script/source = "extends \"areaAcao.gd\"
+
+func _ready():
+	tex = load(\"res://laranja.png\")
 
 func atua(player):
 	print(\"arvore\")
 "
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
@@ -33,7 +36,7 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
-script/script = SubResource( 3 )
+script/script = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 
@@ -53,7 +56,7 @@ editor/display_folded = true
 transform/pos = Vector2( -0.426678, 4.71909 )
 transform/scale = Vector2( 1.64224, 1.67232 )
 input/pickable = true
-shapes/0/shape = SubResource( 2 )
+shapes/0/shape = SubResource( 3 )
 shapes/0/transform = Matrix32( 2.37566, 0, 0, 2.44508, 0.491707, -0.593608 )
 shapes/0/trigger = true
 gravity_vec = Vector2( 0, 1 )
@@ -65,7 +68,7 @@ angular_damp = 1.0
 
 transform/pos = Vector2( 0.491707, -0.593608 )
 transform/scale = Vector2( 2.37566, 2.44508 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 trigger = true
 _update_shape_index = 0
 
