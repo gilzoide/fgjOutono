@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://Caverna.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Arvore.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node
+
+func _ready():
+	get_node(\"Player/Camera2D\").make_current()
+"
+
+[node name="Node" type="Node"]
+
+script/script = SubResource( 1 )
+
+[node name="Caverna" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( -437.56, -230.062 )
+transform/scale = Vector2( 2.09787, 2.09787 )
+
+[node name="Arvore" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -267.63, 109.378 )
+transform/scale = Vector2( 3.19289, 3.19289 )
+
+[node name="Arvore 2" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 307.231, -167.082 )
+transform/scale = Vector2( 2.85083, 2.85083 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( -9.53491, 23.5754 )
+posicao_limite = 200.0
+
+

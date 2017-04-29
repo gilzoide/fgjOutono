@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://balao.png" type="Texture" id=1]
+[ext_resource path="res://balao.gd" type="Script" id=2]
+
+[node name="Balao" type="Sprite"]
+
+texture = ExtResource( 1 )
+script/script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+
