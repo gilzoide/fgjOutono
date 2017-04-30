@@ -1,46 +1,74 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=8 format=1]
 
-[ext_resource path="res://Caverna.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Arvore.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Coelho.tscn" type="PackedScene" id=4]
+[ext_resource path="res://TileChao2.png" type="Texture" id=1]
+[ext_resource path="res://Caverna.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Arvore.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Coelho.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Arbusto.tscn" type="PackedScene" id=6]
 
 [sub_resource type="GDScript" id=1]
 
-script/source = "extends Node
+script/source = "extends \"fase.gd\"
 
 func _ready():
-	get_node(\"Player/Camera2D\").make_current()
+	._ready()
+	precisa_de = {
+		'fruta': 3,
+		'coelho': 5,
+	}
+	mostra_precisa()
 "
 
 [node name="Node2D" type="Node2D"]
 
-editor/display_folded = true
+process/pause_mode = 1
+z/z = -5
 script/script = SubResource( 1 )
+tempo_precisa = 5.0
 
-[node name="Caverna" parent="." instance=ExtResource( 1 )]
+[node name="Fundo" type="Sprite" parent="."]
+
+visibility/visible = false
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( -2000, -2000, 4000, 4000 )
+
+[node name="Caverna" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( -437.56, -230.062 )
 transform/scale = Vector2( 2.09787, 2.09787 )
 
-[node name="Arvore" parent="." instance=ExtResource( 2 )]
+[node name="Arvore" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -267.63, 109.378 )
 transform/scale = Vector2( 3.19289, 3.19289 )
 
-[node name="Arvore 2" parent="." instance=ExtResource( 2 )]
+[node name="Arvore 2" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 307.231, -167.082 )
 transform/scale = Vector2( 2.85083, 2.85083 )
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
+[node name="Player" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( -40.6067, 27.8226 )
+z/z = 1
 velocidade = 200.0
-posicao_limite = 700.0
+posicao_limite = 1000.0
 
-[node name="Coelho" parent="." instance=ExtResource( 4 )]
+[node name="Coelho" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 284.318, 148.281 )
+
+[node name="Arbusto" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( -289.127, -504.435 )
+tempo_fruta = 15.0
+fruta = "morango"
+
+[node name="Arbusto1" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 572.845, 294.466 )
+fruta = "melancia"
 
 
