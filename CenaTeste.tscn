@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://Caverna.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Arvore.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Coelho.tscn" type="PackedScene" id=4]
 
 [sub_resource type="GDScript" id=1]
 
@@ -12,8 +13,9 @@ func _ready():
 	get_node(\"Player/Camera2D\").make_current()
 "
 
-[node name="Node" type="Node"]
+[node name="Node2D" type="Node2D"]
 
+editor/display_folded = true
 script/script = SubResource( 1 )
 
 [node name="Caverna" parent="." instance=ExtResource( 1 )]
@@ -33,9 +35,12 @@ transform/scale = Vector2( 2.85083, 2.85083 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 22.3316, 40.4102 )
-transform/scale = Vector2( 0.473912, 0.473912 )
+transform/pos = Vector2( -40.6067, 27.8226 )
 velocidade = 200.0
 posicao_limite = 700.0
+
+[node name="Coelho" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 284.318, 148.281 )
 
 

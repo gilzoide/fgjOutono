@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends CollisionObject2D
 
 var tex = null
 var pode_atuar = true

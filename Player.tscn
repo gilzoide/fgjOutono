@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
 [ext_resource path="res://Personagem.png" type="Texture" id=2]
 [ext_resource path="res://Balao.tscn" type="PackedScene" id=3]
+[ext_resource path="res://fonte.fnt" type="BitmapFont" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -14,7 +15,7 @@ height = 58.4899
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 4.38801, 0, 0, 3.90522, 0.151642, 4.32171 )
+shapes/0/transform = Matrix32( 2.27017, 0, 0, 1.91569, 0.168594, 0.92046 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -25,12 +26,13 @@ posicao_limite = null
 
 [node name="Sprite" type="Sprite" parent="."]
 
+transform/scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-transform/pos = Vector2( 0.151642, 4.32171 )
-transform/scale = Vector2( 4.38801, 3.90522 )
+transform/pos = Vector2( 0.168594, 0.92046 )
+transform/scale = Vector2( 2.27017, 1.91569 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
@@ -57,7 +59,23 @@ drag_margin/bottom = 0.2
 [node name="Balao" parent="." instance=ExtResource( 3 )]
 
 visibility/visible = false
-transform/pos = Vector2( 192.679, -233.369 )
-transform/scale = Vector2( 1.67572, 1.67572 )
+transform/pos = Vector2( 89.3665, -136.572 )
+transform/scale = Vector2( 0.739666, 0.739666 )
+
+[node name="Pontuacao" type="Label" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -47.0
+margin/top = -155.0
+margin/right = -7.0
+margin/bottom = -115.0
+custom_fonts/font = ExtResource( 4 )
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 

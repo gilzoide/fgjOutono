@@ -4,6 +4,7 @@ export (float) var velocidade
 export (float) var posicao_limite
 var alvo = null setget set_alvo
 var pontos
+var total_pontos
 
 func _ready():
 	reset()
@@ -11,7 +12,16 @@ func _ready():
 	set_process_input(true)
 
 func reset():
-	pontos = 0
+	pontos = {
+		'fruta': 0,
+		'coelho': 0,
+	}
+	total_pontos = 0
+
+func aumenta_ponto(categoria):
+	pontos[categoria] += 1
+	total_pontos += 1
+	get_node("Pontuacao").set_text(str(total_pontos))
 
 func _fixed_process(delta):
 	""" Movimento """
